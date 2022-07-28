@@ -1,6 +1,6 @@
 fun main() {
     val itemPrice: Int = 100
-    val itemCount: Int = 9
+    val itemCount: Int = 10
     val discount: Int = 100
     val discountStart: Int = 1000
     val discountFinish: Int = 10000
@@ -11,8 +11,10 @@ fun main() {
 
     if (totalPrice > discountStart && totalPrice < discountFinish) {
         result = if (meloman) (totalPrice - discount) * 0.99 else (totalPrice - discount)
-    } else {
+    } else if (totalPrice > discountFinish) {
         result = if (meloman) totalPrice * 0.95 * 0.99 else totalPrice * 0.95
+    } else {
+        result = totalPrice
     }
 
     val sumDiscount = totalPrice - result
